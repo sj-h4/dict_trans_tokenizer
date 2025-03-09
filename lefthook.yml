@@ -1,0 +1,5 @@
+pre-push:
+  jobs:
+    - name: ruff
+      glob: "*.py"
+      run: uv run ruff {push_files}

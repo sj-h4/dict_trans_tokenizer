@@ -3,12 +3,46 @@ name = "dict-trans-tokenizer"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "sj", email = "64534668+sj-h4@users.noreply.github.com" }
-]
+authors = [{ name = "Haruki Sakajo", email = "sakajoharuki+python@gmail.com" }]
 requires-python = ">=3.12"
 dependencies = []
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+  "beartype>=0.20.0",
+  "debugpy>=1.8.13",
+  "lefthook>=1.11.3",
+  "ruff>=0.9.10",
+]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle (error)
+  "F",   # pyflakes
+  "B",   # bugbear
+  "B9",
+  "C4",  # flake8-comprehensions
+  "SIM", # flake8-simplify
+  "I",   # isort
+  "UP",  # pyupgrade
+  "PIE", # flake8-pie
+  "PGH", # pygrep-hooks
+  "PYI", # flake8-pyi
+  "RUF",
+]
+
+ignore = [
+  # only relevant if you run a script with `python -0`,
+  # which seems unlikely for any of the scripts in this repo
+  "B011",
+  # Leave it to the formatter to split long lines and
+  # the judgement of all of us.
+  "E501",
+]
