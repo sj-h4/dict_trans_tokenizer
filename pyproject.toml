@@ -5,7 +5,13 @@ description = "Add your description here"
 readme = "README.md"
 authors = [{ name = "Haruki Sakajo", email = "sakajoharuki+python@gmail.com" }]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "protobuf>=6.31.0",
+    "pydantic>=2.10.6",
+    "tokenizers>=0.21.0",
+    "trans-tokenizers>=0.1.4",
+    "transformers>=4.49.0",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -16,6 +22,7 @@ dev = [
   "beartype>=0.20.0",
   "debugpy>=1.8.13",
   "lefthook>=1.11.3",
+  "pytest>=8.3.5",
   "ruff>=0.9.10",
 ]
 

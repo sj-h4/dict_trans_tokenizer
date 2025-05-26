@@ -1,5 +1,5 @@
-pre-push:
+pre-commit:
   jobs:
     - name: ruff
-      glob: "*.py"
-      run: uv run ruff {push_files}
+      glob: "src/**/*.py"
+      run: uv run ruff check --fix {push_files}

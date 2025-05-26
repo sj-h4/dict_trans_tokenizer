@@ -5,5 +5,5 @@
 Run:
 
 ```sh
-uv run lefthook instal
+uv run lefthook install
 ```
