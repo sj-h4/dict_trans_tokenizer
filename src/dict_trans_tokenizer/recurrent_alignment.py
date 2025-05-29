@@ -15,7 +15,7 @@ from transformers import (
 from transtokenizers import align
 
 from dict_trans_tokenizer.create_aligned_corpus import create_aligned_corpus
-from dict_trans_tokenizer.map_tokens import TokenMpper
+from dict_trans_tokenizer.map_tokens import TokenMapper
 from dict_trans_tokenizer.remap_model import remap_model
 from dict_trans_tokenizer.types.alignment_mode import AlignmentMode
 from dict_trans_tokenizer.types.bilingual_dict import BilingualDict
@@ -88,13 +88,13 @@ def align_tokens(
     dictionary: list[BilingualDict],
     corpus_path: str,
     fast_align_path: str,
-    token_mapper: TokenMpper,
+    token_mapper: TokenMapper,
     alignment_mode: AlignmentMode,
     alignment_log: list[list[str | int]],
     min_count_request_for_consideration: int = 0,
     iteration: int = 0,
     loop: int = 0,
-) -> tuple[PreTrainedTokenizerFast, TokenMpper, list[list[str | int]]]:
+) -> tuple[PreTrainedTokenizerFast, TokenMapper, list[list[str | int]]]:
     """Align tokens in the dictionary.
     Args:
         source_tokenizer: Source tokenizer
@@ -120,7 +120,7 @@ def align_tokens(
         fast_align_path=fast_align_path,
     )
 
-    new_mapper = TokenMpper()
+    new_mapper = TokenMapper()
     new_mapper.tokenized_possible_translations.update(
         token_mapper.tokenized_possible_translations
     )
@@ -185,7 +185,7 @@ def iterate_alignment(
     dictionary: list[BilingualDict],
     corpus_path: str,
     fast_align_path: str,
-    token_mapper: TokenMpper,
+    token_mapper: TokenMapper,
     alignment_mode: AlignmentMode,
     alignment_log: list[list[str | int]],
     min_count_request_for_consideration: int = 10,
@@ -215,7 +215,7 @@ def iterate_alignment(
     )
 
     # Create a new instance
-    new_token_mapper = TokenMpper()
+    new_token_mapper = TokenMapper()
     new_token_mapper.tokenized_possible_translations.update(
         token_mapper.tokenized_possible_translations
     )
@@ -421,7 +421,7 @@ def run_recurrent_alignment(
 
     dictionary_obj = load_bilingual_dict(dictionary)
 
-    token_mapper = TokenMpper()
+    token_mapper = TokenMapper()
     alignment_log: list[list[str | int]] = [
         ["Iteration", "loop", "Mapped Tokens", "All Mapped Tokens", "Min Count"]
     ]

@@ -13,7 +13,7 @@ from dict_trans_tokenizer.utils.logging_config import get_logger
 logger = get_logger(__name__)
 
 
-class TokenMpper:
+class TokenMapper:
     """
     Derived from <https://github.com/LAGoM-NLP/transtokenizer/blob/99a41391da7b6045e80cc6f49bf7cf23abca9056/transtokenizers/transtokenizers.py#L273>
 
